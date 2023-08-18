@@ -12,7 +12,7 @@
     var data:any = [];
     const registerFunction = (event:Event) => {
         if (event && event.target instanceof HTMLFormElement) {
-            const formData = new FormData(event.target)
+            const formData = new FormData(event.target);
             for (let field of formData) {
                 const [key, value] = field;
                 data[key] = value;
