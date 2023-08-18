@@ -11,7 +11,6 @@
     let timeout:number = 2500;
 
     let accountLog:any = [];
-
     fromDatabase.subscribe((value) => {
         accountLog = value;
     })
@@ -24,6 +23,7 @@
     //         "password": "123"
     //     }
     // ];
+    
     let data:any = [];
     const loginFunction = (event:Event) => {
         if (event && event.target instanceof HTMLFormElement) {

@@ -1,6 +1,7 @@
 <script lang="ts">
     import Toasts from "$lib/toasts/Toasts.svelte";
     import { addToast } from "$lib/toasts/store";
+    import { fromDatabase } from "$lib/userdata/store";
     //toast constants
     let message:String;
     let type:String;
@@ -9,6 +10,13 @@
 
 
     let accountLog:any = [];
+    // ----- This is the store function -----
+    // It takes the content from store and saves
+    // into a variable that I can easily reference.
+    fromDatabase.subscribe((value) => {
+        accountLog = value;
+    })
+    // --------------------------------------
     var data:any = [];
     const registerFunction = (event:Event) => {
         if (event && event.target instanceof HTMLFormElement) {
@@ -40,10 +48,19 @@
                 message = `Hello ${data.firstName}, you have ${data.role.toLowerCase()} access.`;
                 type = "success";
                 addToast({message, type, dismissible, timeout});
-                accountLog.push(data)
+
+                let toSave:any = {
+                    "firstName": data.firstName,
+                    "lastName": data.lastName,
+                    "role": data.role,
+                    "email": data.email,
+                    "password": data.password
+                };
+                accountLog.push(toSave);
+                fromDatabase.update((value) => [{ ...toSave}, ...value]) // Code I traced from stores.js in toasts
             }
         }
-        data = [] // This fixes a bug in which all the contents of dataLog gets replaced with the latest value of data.
+        data = [];
         console.log(accountLog)
     }
 
@@ -75,7 +92,7 @@
     </div>
     <div class="formItem" id="lastnameDiv">
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastname" id="lastName" class="registrationData" required>
+        <input type="text" name="lastName" id="lastName" class="registrationData" required>
     </div>
     <div class="formItem" id="emailDiv">
         <label for="email">Email</label>
