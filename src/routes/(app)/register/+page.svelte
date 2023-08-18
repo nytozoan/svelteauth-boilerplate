@@ -67,7 +67,7 @@
 </script>
 
 <h1>Register</h1>
-<button>Sample</button>
+<Toasts />
 <form on:submit|preventDefault = {registerFunction}>
     <div class="formItem" id="firstnameDiv">
         <label for="firstName">First Name</label>
