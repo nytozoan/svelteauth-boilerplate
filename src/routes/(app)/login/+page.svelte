@@ -38,7 +38,7 @@
             for (let i = 0; i < accountLog.length; i++) {
                 if (data.email == accountLog[i].email) {
                     if (data.password === accountLog[i].password) {
-                        addToast({message:`Welcome back, ${accountLog[i].firstName}!`, type:"success", dismissible, timeout})
+                        addToast(`Welcome back, ${accountLog[i].firstName}!`)
                         loginFunctionComplete = true;
                         break;
                     }
@@ -48,6 +48,8 @@
             }
         }
     }
+
+    let passwordVisibilityToggle = "password"
 </script>
 
 <h1>Login</h1>
@@ -60,8 +62,8 @@
     </div>
     <div class="formItem" id="passwordDiv">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="registrationData" required>
-        <input type="checkbox" id="passwordVisibilityToggle">
+        <input type="{passwordVisibilityToggle}" name="password" id="password" class="registrationData" required>
+        <input type="checkbox" id="passwordVisibilityToggle" on:click={() => {if (passwordVisibilityToggle == "password"){passwordVisibilityToggle = "text"} else passwordVisibilityToggle = "password"}}>
         <label for="passwordVisibilityToggle">Show</label>
     </div>
     

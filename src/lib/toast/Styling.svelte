@@ -13,9 +13,5 @@
         color: #064789;
         padding: 30px;
         width: 200px;
-
-        position: absolute;
-        top: 10px;
-        right: 10px;
     }
 </style>
