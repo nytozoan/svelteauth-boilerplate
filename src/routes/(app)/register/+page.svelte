@@ -2,11 +2,6 @@
     import Assembler from "$lib/toast/Assembler.svelte";
     import { addToast } from "$lib/toast/store";
     import { fromDatabase } from "$lib/userdata/store";
-    //toast constants
-    let message:String;
-    let type:String;
-    let dismissible:boolean = true;
-    let timeout:number = 2500;
 
 
     let accountLog:any = [];
