@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Toasts from "$lib/toasts/Toasts.svelte";
-    import { addToast } from "$lib/toasts/store";
+    import Toasts from "$lib/dep/toasts/Toasts.svelte";
+    import { addToast } from "$lib/dep/toasts/store";
     import { fromDatabase } from "$lib/userdata/store";
     //toast constants
     let message:String;
@@ -13,7 +13,7 @@
     // ----- This is the store function -----
     // It takes the content from store and saves
     // into a variable that I can easily reference.
-    fromDatabase.subscribe((value) => {
+    fromDatabase.subscribe((value) => { // Add an unsubscribe function, similar to malloc().
         accountLog = value;
     })
     // --------------------------------------
@@ -52,12 +52,13 @@
                 let toSave:any = {
                     "firstName": data.firstName,
                     "lastName": data.lastName,
-                    "role": data.role,
                     "email": data.email,
-                    "password": data.password
+                    "password": data.password,
                 };
                 accountLog.push(toSave);
-                fromDatabase.update((value) => [{ ...toSave}, ...value]) // Code I traced from stores.js in toasts
+                //------------------
+                fromDatabase.update((value) => [ {...toSave, role:"USER"}, ...value]) // Code I traced from stores.js in toasts
+                // --------------------
             }
         }
         data = [];

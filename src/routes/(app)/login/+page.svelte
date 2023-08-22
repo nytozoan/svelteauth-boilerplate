@@ -1,7 +1,7 @@
 <script lang="ts">
-	import SuccessIcon from "$lib/toasts/SuccessIcon.svelte";
-    import Toasts from "$lib/toasts/Toasts.svelte";
-	import { addToast } from "$lib/toasts/store";
+	import SuccessIcon from "$lib/dep/toasts/SuccessIcon.svelte";
+    import Toasts from "$lib/dep/toasts/Toasts.svelte";
+	import { addToast } from "$lib/dep/toasts/store";
     import { fromDatabase } from "$lib/userdata/store";
     
     // Toast config
@@ -33,17 +33,17 @@
                 data[key] = value;
             }
 
-            let loggedIn:boolean = false;
+            let loginFunctionComplete:boolean = false;
             console.log(accountLog)
             for (let i = 0; i < accountLog.length; i++) {
                 if (data.email == accountLog[i].email) {
                     if (data.password === accountLog[i].password) {
                         addToast({message:`Welcome back, ${accountLog[i].firstName}!`, type:"success", dismissible, timeout})
-                        loggedIn = true;
+                        loginFunctionComplete = true;
                         break;
                     }
                 }
-            } if (loggedIn == false) {
+            } if (loginFunctionComplete == false) {
                 addToast({message:`Invalid email and/or password`, type:"error", dismissible, timeout})
             }
         }
