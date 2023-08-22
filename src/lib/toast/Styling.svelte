@@ -13,5 +13,6 @@
         color: #064789;
         padding: 30px;
         width: 200px;
+        margin-bottom: 10px;
     }
 </style>
