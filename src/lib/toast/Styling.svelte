@@ -15,5 +15,7 @@
         width: 200px;
 
         position: absolute;
+        top: 10px;
+        right: 10px;
     }
 </style>

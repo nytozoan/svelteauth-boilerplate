@@ -13,5 +13,4 @@
     {#each toastContentArray as item} <!-- Can add a second argument, `i`, for an iterative variable..-->
         <div><Styling>{item}</Styling></div>
     {/each}
-    <button on:click={dismissToast}>Clear</button>
 </div>

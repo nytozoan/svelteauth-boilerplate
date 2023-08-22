@@ -1,7 +1,7 @@
 <script lang="ts">
-	import SuccessIcon from "$lib/dep/toasts/SuccessIcon.svelte";
     import Toasts from "$lib/dep/toasts/Toasts.svelte";
-	import { addToast } from "$lib/dep/toasts/store";
+    import Assembler from "$lib/toast/Assembler.svelte";
+	import { addToast } from "$lib/toast/store";
     import { fromDatabase } from "$lib/userdata/store";
     
     // Toast config
@@ -44,7 +44,7 @@
                     }
                 }
             } if (loginFunctionComplete == false) {
-                addToast({message:`Invalid email and/or password`, type:"error", dismissible, timeout})
+                addToast("Invalid email and/or password")
             }
         }
     }
@@ -52,7 +52,7 @@
 
 <h1>Login</h1>
 
-<Toasts />
+<Assembler />
 <form on:submit|preventDefault = {loginFunction}>
     <div class="formItem" id="emailDiv">
         <label for="email">Email</label>
