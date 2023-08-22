@@ -71,6 +71,25 @@
     //     repeatPasswordState = !repeatPasswordState;
     //     return output;
     // }
+
+    let passwordVisibilityToggle = "password"
+    let repeatPasswordVisibilityToggle = "password"
+    let visibilitySwitcher = (address:string) => {
+        if (address == repeatPasswordVisibilityToggle) {
+            if (address == "password") address = "text"
+            else address = "password"
+        }
+        switch (address) {
+            case passwordVisibilityToggle:
+                if (passwordVisibilityToggle == "password") passwordVisibilityToggle = "text"
+                else passwordVisibilityToggle = "password"
+                break
+            case repeatPasswordVisibilityToggle:
+                if (repeatPasswordVisibilityToggle == "password") repeatPasswordVisibilityToggle = "text"
+                else repeatPasswordVisibilityToggle = "password"
+                break
+        }
+    }
 </script>
 
 <h1>Register</h1>
@@ -90,14 +109,14 @@
     </div>
     <div class="formItem" id="passwordDiv">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="registrationData" required>
-        <input type="checkbox" id="passwordVisibilityToggle">
+        <input type="{passwordVisibilityToggle}" name="password" id="password" class="registrationData" required>
+        <input type="checkbox" id="passwordVisibilityToggle" on:click={() => {if (passwordVisibilityToggle == "password"){passwordVisibilityToggle = "text"} else passwordVisibilityToggle = "password"}}>
         <label for="passwordVisibilityToggle">Show</label>
     </div>
     <div class="formItem" id="repeatPasswordDiv">
         <label for="repeatPassword">Repeat Password</label>
-        <input type="password" name="repeatPassword" id="repeatPassword" class="registrationData" required>
-        <input type="checkbox" id="repeatPasswordVisibilityToggle">
+        <input type="{repeatPasswordVisibilityToggle}" name="repeatPassword" id="repeatPassword" class="registrationData" required>
+        <input type="checkbox" id="repeatPasswordVisibilityToggle" on:click={() => {if (repeatPasswordVisibilityToggle == "password"){repeatPasswordVisibilityToggle = "text"} else repeatPasswordVisibilityToggle = "password"}}>
         <label for="repeatPasswordVisibilityToggle">Show</label>
     </div>
     <div class="formItem" id="roleDiv">
