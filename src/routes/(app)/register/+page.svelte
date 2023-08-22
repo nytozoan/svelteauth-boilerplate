@@ -31,23 +31,17 @@
             
             for (let i = 0; i < accountLog.length && emailCheck == true; i++) {
                 if (data.email == accountLog[i].email) {
-                    message = "Email taken";
-                    type = "error";
-                    addToast({message, type, dismissible, timeout});
+                    addToast("Email taken");
                     emailCheck = false;
                 }
             }
             // Password check
             if (data.password !== data.repeatPassword) {
-                message = "Passwords don't match";
-                type = "error";
-                addToast({message, type, dismissible, timeout});
+                addToast("Passwords don't match");
                 passwordCheck = false
             }
             if (emailCheck && passwordCheck) {
-                message = `Hello ${data.firstName}, you have ${data.role.toLowerCase()} access.`;
-                type = "success";
-                addToast({message, type, dismissible, timeout});
+                addToast(`Hello ${data.firstName}, you have ${data.role.toLowerCase()} access.`);
 
                 let toSave:any = {
                     "firstName": data.firstName,
