@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Toasts from "$lib/dep/toasts/Toasts.svelte";
-    import { addToast } from "$lib/dep/toasts/store";
+    import Assembler from "$lib/toast/Assembler.svelte";
+    import { addToast } from "$lib/toast/store";
     import { fromDatabase } from "$lib/userdata/store";
     //toast constants
     let message:String;
@@ -85,7 +85,7 @@
 </script>
 
 <h1>Register</h1>
-<Toasts />
+<Assembler />
 <form on:submit|preventDefault = {registerFunction}>
     <div class="formItem" id="firstnameDiv">
         <label for="firstName">First Name</label>
