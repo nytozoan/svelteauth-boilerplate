@@ -45,7 +45,8 @@
                     "lastName": data.lastName,
                     "email": data.email,
                     "password": data.password,
-                    "role": data.role
+                    "role": data.role,
+                    "isLoggedIn": false
                 };
                 accountLog.push(toSave);
                 fromDatabase.update((value) => [toSave, value]);

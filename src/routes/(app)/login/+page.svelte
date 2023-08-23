@@ -40,6 +40,7 @@
                 if (data.email == accountLog[i].email) {
                     if (data.password === accountLog[i].password) {
                         addToast(`Welcome back, ${accountLog[i].firstName}!`);
+                        // Use filter() to find current account and replace isLoggedIn to true
                         loginFunctionComplete = true;
                     }
                 }

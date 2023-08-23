@@ -5,5 +5,6 @@ export const fromDatabase = writable ([{
             "lastName": "Nytozoan",
             "role": "ADMIN",
             "email": "jellyfish@nytozoan.com",
-            "password": "123"
+            "password": "123",
+            "isLoggedIn": true
         }]);
