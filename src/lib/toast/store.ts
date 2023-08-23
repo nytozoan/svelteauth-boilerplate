@@ -4,10 +4,10 @@ export const toastList = writable<any>([]);
 let listOfActiveToasts:Array<any> = [];
 toastList.subscribe(value => listOfActiveToasts = value);
 let timeout = 1000;
-export const addToast = (data:any) => {
-    toastList.update((value:Array<any>) => [...value, data]);
+export const addToast = (toastMessage:st    ring) => {
+    toastList.update((value:Array<any>) => [...value, toastMessage]);
     console.log(listOfActiveToasts);
-    setTimeout(() => {toastList.update((value) => [])}, timeout); // Might need to either replace this, or place it in a "clear all" button.
+    setTimeout(() => {toastList.update(() => [])}, timeout); // Might need to either replace this, or place it in a "clear all" button.
 }
 
 export const dismissToast = () => toastList.update((value:Array<any>) => []); // Will probably need to rewrite this.
