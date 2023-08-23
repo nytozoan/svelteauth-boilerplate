@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Assembler from "$lib/toast/Assembler.svelte";
+    // import Assembler from "$lib/toast/Assembler.svelte";
     import { addToast } from "$lib/toast/store";
     import { fromDatabase } from "$lib/userdata/store";
 
@@ -74,26 +74,26 @@
 
     let passwordVisibilityToggle = "password"
     let repeatPasswordVisibilityToggle = "password"
-    let visibilitySwitcher = (address:string) => {
-        if (address == repeatPasswordVisibilityToggle) {
-            if (address == "password") address = "text"
-            else address = "password"
-        }
-        switch (address) {
-            case passwordVisibilityToggle:
-                if (passwordVisibilityToggle == "password") passwordVisibilityToggle = "text"
-                else passwordVisibilityToggle = "password"
-                break
-            case repeatPasswordVisibilityToggle:
-                if (repeatPasswordVisibilityToggle == "password") repeatPasswordVisibilityToggle = "text"
-                else repeatPasswordVisibilityToggle = "password"
-                break
-        }
-    }
+    // let visibilitySwitcher = (address:string) => {
+    //     if (address == repeatPasswordVisibilityToggle) {
+    //         if (address == "password") address = "text"
+    //         else address = "password"
+    //     }
+    //     switch (address) {
+    //         case passwordVisibilityToggle:
+    //             if (passwordVisibilityToggle == "password") passwordVisibilityToggle = "text"
+    //             else passwordVisibilityToggle = "password"
+    //             break
+    //         case repeatPasswordVisibilityToggle:
+    //             if (repeatPasswordVisibilityToggle == "password") repeatPasswordVisibilityToggle = "text"
+    //             else repeatPasswordVisibilityToggle = "password"
+    //             break
+    //     }
+    // }
 </script>
 
 <h1>Register</h1>
-<Assembler />
+<!-- <Assembler /> -->
 <form on:submit|preventDefault = {registerFunction}>
     <div class="formItem" id="firstnameDiv">
         <label for="firstName">First Name</label>

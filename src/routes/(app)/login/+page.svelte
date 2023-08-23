@@ -1,6 +1,5 @@
 <script lang="ts">
-    import Toasts from "$lib/dep/toasts/Toasts.svelte";
-    import Assembler from "$lib/toast/Assembler.svelte";
+    // import Assembler from "$lib/toast/Assembler.svelte";
 	import { addToast } from "$lib/toast/store";
     import { fromDatabase } from "$lib/userdata/store";
     
@@ -54,7 +53,7 @@
 
 <h1>Login</h1>
 
-<Assembler />
+<!-- <Assembler /> -->
 <form on:submit|preventDefault = {loginFunction}>
     <div class="formItem" id="emailDiv">
         <label for="email">Email</label>
