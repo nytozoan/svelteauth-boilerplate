@@ -3,7 +3,7 @@ export const toastList = writable<any>([]);
 
 let listOfActiveToasts:Array<any> = [];
 toastList.subscribe(value => listOfActiveToasts = value);
-let timeout = 1000;
+let timeout = 2500;
 export const addToast = (toastMessage:string) => {
     toastList.update((value:Array<any>) => [...value, toastMessage]);
     console.log(listOfActiveToasts);

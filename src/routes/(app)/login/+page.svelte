@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
+
     // import Assembler from "$lib/toast/Assembler.svelte";
 	import { addToast } from "$lib/toast/store";
     import { fromDatabase } from "$lib/userdata/store";
@@ -37,14 +39,13 @@
             for (let i = 0; i < accountLog.length; i++) {
                 if (data.email == accountLog[i].email) {
                     if (data.password === accountLog[i].password) {
-                        addToast(`Welcome back, ${accountLog[i].firstName}!`)
+                        addToast(`Welcome back, ${accountLog[i].firstName}!`);
                         loginFunctionComplete = true;
-                        break;
                     }
                 }
             } if (loginFunctionComplete == false) {
-                addToast("Invalid email and/or password")
-            }
+                addToast("Invalid email and/or password");
+            } else goto("/dashboard");
         }
     }
 

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
+
     // import Assembler from "$lib/toast/Assembler.svelte";
     import { addToast } from "$lib/toast/store";
     import { fromDatabase } from "$lib/userdata/store";
@@ -43,11 +45,14 @@
                     "lastName": data.lastName,
                     "email": data.email,
                     "password": data.password,
+                    "role": data.role
                 };
                 accountLog.push(toSave);
+                fromDatabase.update((value) => [toSave, value]);
                 //------------------
-                fromDatabase.update((value) => [ {...toSave, role:"USER"}, ...value]) // Code I traced from stores.js in toasts
+                // fromDatabase.update((value) => [ {...toSave, role:"USER"}, ...value]) // Do this to edit individual params of an object (like role).
                 // --------------------
+                goto("/login");
             }
         }
         data = [];
